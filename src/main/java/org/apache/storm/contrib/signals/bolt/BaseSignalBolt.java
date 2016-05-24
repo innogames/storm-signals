@@ -1,19 +1,16 @@
 // Copyright (c) P. Taylor Goetz (ptgoetz@gmail.com)
 
-package backtype.storm.contrib.signals.bolt;
+package org.apache.storm.contrib.signals.bolt;
 
-import java.util.Map;
-
+import org.apache.storm.contrib.signals.SignalListener;
+import org.apache.storm.contrib.signals.StormSignalConnection;
+import org.apache.storm.task.OutputCollector;
+import org.apache.storm.task.TopologyContext;
+import org.apache.storm.topology.base.BaseRichBolt;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import backtype.storm.contrib.signals.StormSignalConnection;
-import backtype.storm.contrib.signals.SignalListener;
-import backtype.storm.task.OutputCollector;
-import backtype.storm.task.TopologyContext;
-import backtype.storm.topology.OutputFieldsDeclarer;
-import backtype.storm.topology.base.BaseRichBolt;
-import backtype.storm.tuple.Tuple;
+import java.util.Map;
 
 @SuppressWarnings("serial")
 public abstract class BaseSignalBolt extends BaseRichBolt implements SignalListener {
@@ -37,7 +34,7 @@ public abstract class BaseSignalBolt extends BaseRichBolt implements SignalListe
         }
     }
 
-    
+
     public void sendSignal(String toPath, byte[] signal)throws Exception {
         this.signalConnection.send(toPath, signal);
     }

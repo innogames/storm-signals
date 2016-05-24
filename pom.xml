@@ -13,6 +13,12 @@
 	<name>Storm Signals</name>
 	<description>Storm Signals</description>
 
+	<properties>
+		<java.version>1.6</java.version>
+		<storm.version>1.0.1</storm.version>
+		<curator-framework.version>1.0.1</curator-framework.version>
+	</properties>
+
 	<licenses>
 		<license>
 			<name>Eclipse Public License - v 1.0</name>
@@ -39,16 +45,18 @@
 			<url>http://clojars.org/repo</url>
 		</repository>
 	</repositories>
-	<properties>
-		<storm.version>0.8.0</storm.version>
-	</properties>
 	<dependencies>
 		<dependency>
-			<groupId>storm</groupId>
-			<artifactId>storm</artifactId>
+			<groupId>org.apache.storm</groupId>
+			<artifactId>storm-core</artifactId>
 			<version>${storm.version}</version>
-			<!-- keep storm out of the jar-with-dependencies -->
 			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.netflix.curator</groupId>
+			<artifactId>curator-framework</artifactId>
+			<version>${curator-framework.version}</version>
+			<scope>compile</scope>
 		</dependency>
 	</dependencies>
 	<build>
@@ -57,8 +65,8 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<configuration>
-					<source>1.6</source>
-					<target>1.6</target>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
 				</configuration>
 			</plugin>
 		</plugins>

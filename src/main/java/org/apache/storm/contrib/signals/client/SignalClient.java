@@ -1,6 +1,6 @@
 // Copyright (c) P. Taylor Goetz (ptgoetz@gmail.com)
 
-package backtype.storm.contrib.signals.client;
+package org.apache.storm.contrib.signals.client;
 
 import java.io.IOException;
 

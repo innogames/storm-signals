@@ -1,4 +1,4 @@
-package backtype.storm.contrib.signals;
+package org.apache.storm.contrib.signals;
 
 import org.apache.zookeeper.WatchedEvent;
 import org.apache.zookeeper.Watcher;
@@ -14,8 +14,8 @@ public abstract class AbstractSignalConnection implements Watcher {
     protected String name;
     protected CuratorFramework client;
     protected SignalListener listener;
-    
-    
+
+
     protected void initWatcher() throws Exception {
         // create base path if necessary
         Stat stat = this.client.checkExists().usingWatcher(this).forPath(this.name);
@@ -55,8 +55,8 @@ public abstract class AbstractSignalConnection implements Watcher {
     public void close() {
         this.client.close();
     }
-    
-    
+
+
     public void send(String toPath, byte[] signal) throws Exception {
         Stat stat = this.client.checkExists().forPath(toPath);
         if (stat == null) {

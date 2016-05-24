@@ -1,4 +1,4 @@
-package backtype.storm.contrib.signals;
+package org.apache.storm.contrib.signals;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
