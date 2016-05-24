@@ -2,15 +2,12 @@
 
 package org.apache.storm.contrib.signals.client;
 
-import java.io.IOException;
-
+import org.apache.curator.framework.CuratorFramework;
+import org.apache.curator.framework.CuratorFrameworkFactory;
+import org.apache.curator.retry.RetryOneTime;
 import org.apache.zookeeper.data.Stat;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import com.netflix.curator.framework.CuratorFramework;
-import com.netflix.curator.framework.CuratorFrameworkFactory;
-import com.netflix.curator.retry.RetryOneTime;
 
 public class SignalClient {
 
@@ -21,12 +18,8 @@ public class SignalClient {
 
     public SignalClient(String zkConnectString, String name) {
         this.name = name;
-        try {
-            this.client = CuratorFrameworkFactory.builder().namespace("storm-signals").connectString(zkConnectString)
+        this.client = CuratorFrameworkFactory.builder().namespace("storm-signals").connectString(zkConnectString)
                     .retryPolicy(new RetryOneTime(500)).build();
-        } catch (IOException e) {
-            LOG.error("Error creating zookeeper client.", e);
-        }
         LOG.debug("created Curator client");
     }
 

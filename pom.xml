@@ -9,14 +9,15 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.github.ptgoetz</groupId>
 	<artifactId>storm-signals</artifactId>
-	<version>0.2.1-SNAPSHOT</version>
+	<version>0.4.1-SNAPSHOT</version>
 	<name>Storm Signals</name>
 	<description>Storm Signals</description>
 
 	<properties>
 		<java.version>1.6</java.version>
 		<storm.version>1.0.1</storm.version>
-		<curator-framework.version>1.0.1</curator-framework.version>
+		<curator-framework.version>2.7.1</curator-framework.version>
+		<zookeeper.version>3.4.6</zookeeper.version>
 	</properties>
 
 	<licenses>
@@ -53,9 +54,15 @@
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
-			<groupId>com.netflix.curator</groupId>
+			<groupId>org.apache.curator</groupId>
 			<artifactId>curator-framework</artifactId>
 			<version>${curator-framework.version}</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.zookeeper</groupId>
+			<artifactId>zookeeper</artifactId>
+			<version>${zookeeper.version}</version>
 			<scope>compile</scope>
 		</dependency>
 	</dependencies>
